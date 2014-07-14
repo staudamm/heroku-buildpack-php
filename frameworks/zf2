@@ -27,5 +27,9 @@ case "$1" in
     compile)
         echo "-----> Setting up Zend2 app"
         cp "$basedir/../conf/nginx/zf2.conf.erb" "$BUILD_DIR/conf/site.conf.erb"
+        
+        echo "-----> Setting up node stuff"
+        /app/scripts/build.sh
+        
         ;;
 esac
