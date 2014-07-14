@@ -30,8 +30,11 @@ case "$1" in
         ;;
     end)
         echo "-----> Setting up node stuff"
+        pwd
         /app/scripts/build.sh
         chmod -R 777 /app/public
         ls -al /app
+        ls -al /build/app
+        
         ;;
 esac
