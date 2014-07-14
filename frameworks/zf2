@@ -31,5 +31,7 @@ case "$1" in
     end)
         echo "-----> Setting up node stuff"
         /app/scripts/build.sh
+        
+        ls -al /app
         ;;
 esac
