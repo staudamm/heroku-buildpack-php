@@ -31,8 +31,8 @@ case "$1" in
     end)
         echo "-----> Setting up node stuff"
         pwd
-        /app/scripts/build.sh
-        chmod -R 777 /app/public
+        /build/app/scripts/build.sh
+
         ls -al /app
         ls -al /build/app
         
