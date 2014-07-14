@@ -3,16 +3,30 @@ root /app/<%= ENV['DOCUMENT_ROOT'] %>;
 <% else %>
 root /app/public;
 <% end %>
-index index.html index.php;
-try_files $uri /api/index.php?$args;
 
+try_files $uri $uri/ /api/index.php?$args;
+index  index.html index.htm index.php;
+client_max_body_size 100m;
+       
 # this will only pass index.php to the fastcgi process which is generally safer but
 # assumes the whole site is run via Zend 2.
-location /api/index.php {
+location ~ \.php$ {
     include fastcgi_params;
     fastcgi_connect_timeout 3s;
     fastcgi_read_timeout 10s;
     fastcgi_buffers 256 4k;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     fastcgi_pass php;
+}
+
+# Will serve /storage/data/myfile.tar.gz
+# When internally passed URI /assets/myfile.tar.gz
+# Via the X-Accel-Forward header
+location /assets {
+    internal;
+    root  /app/data;
+}
+
+location /icons {
+    root  /app/data/assets;
 }
