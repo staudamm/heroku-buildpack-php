@@ -24,9 +24,9 @@ location ~ \.php$ {
 # Via the X-Accel-Forward header
 location /assets {
     internal;
-    root  /app/data;
+    root  /storage/data;
 }
 
 location /icons {
-    root  /app/data/assets;
+    root  /storage/data/assets;
 }
