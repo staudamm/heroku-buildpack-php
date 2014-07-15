@@ -33,8 +33,8 @@ case "$1" in
         pwd
         /build/app/scripts/build.sh
 
-        ls -al /app
-        ls -al /build/app
+        ln -s libMagickWand.so.5.0.0 /usr/lib/x86_64-linux-gnu/libMagickWand.so.2
+        ln -s libMagickCore.so.5.0.0 /usr/lib/x86_64-linux-gnu/libMagickCore.so.2
         
         ;;
 esac
