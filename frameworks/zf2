@@ -31,6 +31,10 @@ case "$1" in
     end)
         echo "-----> Setting up node stuff"
         pwd
+        echo "-----> Removing broken symlinks, so build goes through"
+        rm -f /build/app/public_src/api/docs 
+        rm -f /build/app/public_src/swagger-ui
+        
         /build/app/scripts/build.sh
 
         ln -s libMagickWand.so.5.0.0 /usr/lib/x86_64-linux-gnu/libMagickWand.so.2
