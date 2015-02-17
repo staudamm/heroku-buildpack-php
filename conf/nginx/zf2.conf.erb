@@ -7,7 +7,17 @@ root /app/public;
 try_files $uri $uri/ /api/index.php?$args;
 index  index.html index.htm index.php;
 client_max_body_size 100m;
-       
+
+location ~ ^/img/logo/(?<filename>[.a-z0-9A-Z]+) {
+    root /storage/data/logo;
+    try_files /Client/$filename @defaultlogo;
+}
+
+location @defaultlogo {
+    root /storage/data/logo;
+    try_files /Default/$filename =404;
+}
+
 # this will only pass index.php to the fastcgi process which is generally safer but
 # assumes the whole site is run via Zend 2.
 location ~ \.php$ {
@@ -35,3 +45,4 @@ location /tmp {
     internal;
     root  /storage/data;
 }
+
