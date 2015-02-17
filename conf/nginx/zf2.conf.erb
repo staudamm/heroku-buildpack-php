@@ -14,10 +14,10 @@ location ~ ^/img/logo/(?<filename>[.a-z0-9A-Z]+) {
 }
 
 location @defaultlogo {
-    root /storage/data/logo;
-    try_files /Default/$filename =404;
+    root /app/public/img/logo;
+    try_files /$filename =404;
 }
-
+    
 # this will only pass index.php to the fastcgi process which is generally safer but
 # assumes the whole site is run via Zend 2.
 location ~ \.php$ {
